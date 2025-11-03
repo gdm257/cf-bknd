@@ -29,8 +29,17 @@ pnpm deploy
 
 ### Option 2: GitHub Actions (CI/CD)
 
+The project includes automated deployment via GitHub Actions. Deployment is triggered automatically when:
+
+- Code is pushed to the `main` branch
+- Manual dispatch from the Actions tab
+
+**Setup required:**
+
 1. [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with "Edit Cloudflare Workers" permissions
-2. Set `CLOUDFLARE_API_TOKEN` to your repository secrets (GitHub repository -> Settings -> Secrets and variables -> Actions -> New repository secret)
+2. Add the following secrets to your repository (GitHub repository -> Settings -> Secrets and variables -> Actions -> New repository secret):
+  - `CLOUDFLARE_API_TOKEN`: Your Cloudflare API token
+  - `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare account ID (found in Cloudflare dashboard sidebar)
 
 ## Development
 

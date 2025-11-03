@@ -1,37 +1,48 @@
-# bknd starter: Cloudflare Workers
-A minimal Node.js project with bknd integration.
+## Overview
 
-## Project Structure
+Bootstrap [bknd](https://github.com/bknd-io/bknd) on Cloudflare Workers with D1 database and R2 storage.
 
-Inside of your Node.js project, you'll see the following folders and files:
+## Prerequisites
 
-```text
-/
-├── src/
-│   └── index.ts
-├── package.json
-└── wrangler.json
+- pnpm package manager
+- Cloudflare account with Workers, D1, and R2 enabled
+
+If you're using a D1 database, make sure to create a D1 database in your Cloudflare account and update the database configuration in `wrangler.toml`:
+
+```bash
+npx wrangler d1 create bknd
 ```
 
-To update `bknd` config, check `src/index.ts`.
+For R2 storage, create a bucket:
 
-## Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command           | Action                                                   |
-|:------------------|:---------------------------------------------------------|
-| `npm install`     | Installs dependencies                                    |
-| `npm run dev`     | Starts local dev server with `watch` at `localhost:8787` |
-| `npm run typegen` | Generates wrangler types                                 |
-
-## Before you deploy
-If you're using a D1 database, make sure to create a database in your cloudflare account and replace the `database_id` accordingly in `wrangler.json`.
-
-```sh
-npx wrangler d1 create my-database
+```bash
+npx wrangler r2 bucket create bknd
 ```
 
-## Want to learn more?
+## Deployment
 
-Feel free to check [our documentation](https://docs.bknd.io/integration/cloudflare) or jump into our [Discord server](https://discord.gg/952SFk8Tb8).
+### Option 1: Wrangler CLI (Manual)
+
+```bash
+pnpm deploy
+```
+
+### Option 2: GitHub Actions (CI/CD)
+
+1. [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with "Edit Cloudflare Workers" permissions
+2. Set `CLOUDFLARE_API_TOKEN` to your repository secrets (GitHub repository -> Settings -> Secrets and variables -> Actions -> New repository secret)
+
+## Development
+
+```bash
+pnpm install
+pnpm predev
+pnpm dev
+```
+
+## Scripts
+
+- `pnpm dev` - Start development server
+- `pnpm deploy` - Deploy to production
+- `pnpm typegen` - Generate TypeScript types
+- `pnpm bknd-typegen` - Generate bknd-specific types

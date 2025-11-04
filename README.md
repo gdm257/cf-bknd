@@ -7,7 +7,7 @@ Bootstrap [bknd](https://github.com/bknd-io/bknd) on Cloudflare Workers with D1 
 - pnpm package manager
 - Cloudflare account with Workers, D1, and R2 enabled
 
-If you're using a D1 database, make sure to create a D1 database in your Cloudflare account and update the database configuration in `wrangler.toml`:
+This project use D1 database named "bknd" by default. Make sure to create a D1 database in your Cloudflare account:
 
 ```bash
 npx wrangler d1 create bknd
@@ -18,6 +18,9 @@ For R2 storage, create a bucket:
 ```bash
 npx wrangler r2 bucket create bknd
 ```
+
+> [!TIP]
+> You are allowed to configure database and bucket name in `wrangler.toml`
 
 ## Deployment
 
@@ -36,7 +39,7 @@ The project includes automated deployment via GitHub Actions. Deployment is trig
 
 **Setup required:**
 
-1. [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with "Edit Cloudflare Workers" permissions
+1. [Create API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with "Edit Cloudflare Workers" template + "Account - D1 - Read" permission
 2. Add the following secrets to your repository (GitHub repository -> Settings -> Secrets and variables -> Actions -> New repository secret):
   - `CLOUDFLARE_API_TOKEN`: Your Cloudflare API token
   - `CLOUDFLARE_ACCOUNT_ID`: Your Cloudflare account ID (found in Cloudflare dashboard sidebar)

@@ -3,6 +3,14 @@ name: Deploy to Cloudflare Workers
 on:
   push:
     branches: [main]
+    paths:
+      - 'src/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'tsconfig.json'
+      - 'wrangler.toml'
+      - 'bknd.config.ts'
+      - 'config.ts'
   workflow_dispatch:
 
 jobs:

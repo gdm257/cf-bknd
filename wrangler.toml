@@ -11,13 +11,14 @@ directory = "node_modules/bknd/dist/static"
 
 [observability]
 enabled = true
-
-# Database: D1 by default. To use an external SQLite database instead
-# (Turso/LibSQL), set DATABASE_URL — e.g. "libsql://<host>?authToken=<token>" —
+# Database: D1 by default. To use an external database instead, set DATABASE_URL
 # as a Worker secret (`npx wrangler secret put DATABASE_URL`) or in ".dev.vars"
-# for local development. DATABASE_URL takes precedence over D1 (see config.ts);
-# once set, the block below is no longer needed in production.
+# for local development — PostgreSQL (`postgres://...`) or remote SQLite, e.g.
+# Turso/LibSQL (`libsql://<host>?authToken=<token>`). DATABASE_URL takes
+# precedence over D1 (see config.ts); once set, the block below is no longer
+# needed in production.
 # Keep it while developing though — `pnpm typegen` proxies bindings from it.
+
 [[d1_databases]]
 binding = "DB"
 database_name = "bknd"

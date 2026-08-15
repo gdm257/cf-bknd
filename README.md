@@ -15,11 +15,12 @@ npx wrangler d1 create bknd
 
 ### Using an external database (optional)
 
-Instead of D1, you can use any remote SQLite database (e.g. [Turso/LibSQL](https://docs.bknd.io/usage/database/)). Set a `DATABASE_URL` secret — it takes precedence over D1 (see `config.ts`):
+Instead of D1, you can use an external database — set a `DATABASE_URL` secret, it takes precedence over D1 (see `config.ts`):
 
 ```bash
 npx wrangler secret put DATABASE_URL
-# value: https://<host>?authToken=<token>   ("libsql://" works too)
+# PostgreSQL:   postgres://<user>:<password>@<host>:5432/<database>
+# Turso/LibSQL: https://<host>?authToken=<token>   ("libsql://" works too)
 ```
 
 For local development, put the same variable in a `.dev.vars` file.

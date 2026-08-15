@@ -11,7 +11,8 @@
     "predev": "pnpm typegen"
   },
   "dependencies": {
-    "bknd": "0.20.0"
+    "bknd": "0.20.0",
+    "postgres": "^3.4.9"
   },
   "devDependencies": {
     "cross-env": "^10.1.0",

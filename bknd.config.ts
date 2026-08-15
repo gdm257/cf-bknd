@@ -6,6 +6,8 @@
  */
 
 import { withPlatformProxy } from "bknd/adapter/cloudflare/proxy";
-import config from "./config.ts";
+import getConfig from "./config.ts";
 
-export default withPlatformProxy(config);
+// typegen always proxies the D1 binding, regardless of DATABASE_URL
+export default withPlatformProxy(getConfig({}));
+

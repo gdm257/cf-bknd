@@ -13,6 +13,17 @@ This project use D1 database named "bknd" by default. Make sure to create a D1 d
 npx wrangler d1 create bknd
 ```
 
+### Using an external database (optional)
+
+Instead of D1, you can use any remote SQLite database (e.g. [Turso/LibSQL](https://docs.bknd.io/usage/database/)). Set a `DATABASE_URL` secret — it takes precedence over D1 (see `config.ts`):
+
+```bash
+npx wrangler secret put DATABASE_URL
+# value: https://<host>?authToken=<token>   ("libsql://" works too)
+```
+
+For local development, put the same variable in a `.dev.vars` file.
+
 For R2 storage, create a bucket:
 
 ```bash
